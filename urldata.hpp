@@ -11,26 +11,30 @@ public:
     Urldata(std::string &url,int threadnum):_url(url),_threadnum(threadnum){}
 public:
     std::string _url;//保存url
-    int threadnum;//连接数，默认为-1
+    int _threadnum;//连接数，默认为-1
 };
 
 //下载类
 class Download
 {
 public:
-    Download():_workernum(0){}
+    Download(){}
 
-    void Append(string &str,int num = -1)
+    void Append(std::string &str,int num = -1)
     {
         _udata.push_back(Urldata(str,num));
-        ++_workernum;
     }
 
-    int GetWorker()
+    int GetNum()
     {
-        return _workernum
+        return _udata.size();
     }
+
+	std::string GetUrl(int pos)
+	{
+		return _udata[pos]._url;
+	}
+
 private:
-    vector<Urldata> _udata;
-    int _workernum;
-}
+    std::vector<Urldata> _udata;
+};

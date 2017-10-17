@@ -1,19 +1,23 @@
 #pragma once
 #include "urldata.hpp"
 #include "function.hpp"
+#include "downloader.hpp"
+#include <avhttp.hpp>
 #include <string>
 #include <unistd.h>
 
-void SetParameter(avhttp::setting &set,std::string &path = './')
+/*
+void SetParameter(avhttp::setting &set,std::string path = "./")
 {   
     if(path.empty())
     {
         std::cout << "error path" << std::endl;
         exit(0);
     }
-    set.save_path = path;
+    //set.save_path = path;
     //disable_multi_download = false;
 }
+*/
 
 /*
 void SignHandler(int sign)
@@ -22,15 +26,16 @@ void SignHandler(int sign)
 }
 */
 
-bool CreateWork(int num)
+int CreateWork(int num)
 {
-    if(num < 0)
+	int workid = -1;
+    if(num <= 0)
     {
-        return fasle;
+        return workid;
     }
     else
     {
-        for(int i = 0;i < num;++i)
+        for(int i = 1;i < num;++i)
         {
             int pid = fork();
             if(pid < 0)
@@ -40,19 +45,28 @@ bool CreateWork(int num)
             }
             if(pid == 0)
             {
+				workid = i+1;
                 break;
             }
             else
             {
+				workid = 0;	
                 continue;
             }
         }
     }
-    return true；
+	if(num == 1)
+	{
+		workid = 0;
+	}
+	return workid;
 }
 
-void run()
+void run(std::string url)
 {
-    boost
+	boost::asio::io_service io;
+	avhttp::settings set;
+	Downloader down(io,set);
+	down.Start(url);
 }
 
