@@ -25,6 +25,6 @@ public:
     }
 private:
 	boost::asio::io_service  &_io_service;
-    avhttp::http_stream _stream;
+    avhttp::multi_download _stream;
     avhttp::settings _set;
 };

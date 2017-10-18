@@ -12,7 +12,7 @@ public:
 public:
     std::string _url;//保存url
     std::string _name;//保存文件名
-    std::string _size；
+    std::string _size;//文件大小
     int _threadnum;//连接数，默认为-1
 };
 
