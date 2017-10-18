@@ -94,12 +94,12 @@ public:
                 int percent = 0;
                 long long file_size = _stream.file_size();
                 long long bytes_download = 0;
+                printf("\n");
                 while (percent != 100)
                 {
                     bytes_download = _stream.bytes_download();
                     percent = ((double)bytes_download / (double)file_size) * 100.0f;
-                    boost::this_thread::sleep(boost::posix_time::millisec(200));
-                    printf("\n");
+                    //boost::this_thread::sleep(boost::posix_time::millisec(200));
                     printf("%3d%% [", percent);
                     int progress = percent / 2;
                     for (int i = 0; i < progress; i++)
