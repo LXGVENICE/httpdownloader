@@ -16,8 +16,7 @@ public:
     {
         try
         {
-            _stream.open(url);
-            std::fstream << &_stream;
+            _stream.start(_url,_set);
         }
         catch(std::exception &e)
         {
@@ -27,4 +26,5 @@ public:
 private:
 	boost::asio::io_service  &_io_service;
     avhttp::http_stream _stream;
+    avhttp::settings _set;
 };

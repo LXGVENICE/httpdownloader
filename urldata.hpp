@@ -11,6 +11,8 @@ public:
     Urldata(std::string &url,int threadnum):_url(url),_threadnum(threadnum){}
 public:
     std::string _url;//保存url
+    std::string _name;//保存文件名
+    std::string _size；
     int _threadnum;//连接数，默认为-1
 };
 
