@@ -117,7 +117,7 @@ public:
     
             twork.join();
     
-            std::cout << "****** download completed! ******" << std::endl << std::endl;
+            std::cout << std::endl << "****** download completed! ******" << std::endl;
             std::cout << "-------------------------------------------------------------------------" << std::endl;
             fflush(stdout);
         }
