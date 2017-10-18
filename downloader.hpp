@@ -1,6 +1,7 @@
 #pragma once
 #include <avhttp.hpp>
 #include <iostream>
+#include <stdio.h>
 #include <boost/array.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
@@ -90,7 +91,6 @@ public:
             std::cout << "---------------------------------------------------" << std::endl;
             if (_stream.file_size() != -1)
             {
-                std::cout << std::endl;
                 int percent = 0;
                 long long file_size = _stream.file_size();
                 long long bytes_download = 0;
@@ -109,7 +109,8 @@ public:
                     for (int i = 0; i < 49 - progress; i++)
                         printf(" ");
                     printf("] %s %s", add_suffix(bytes_download).c_str(), add_suffix(_stream.download_rate()).append("/s").c_str());
-                    fflsush(stdout);
+                    fflush(stdout);
+                    printf("/r");
                 }
                 printf("\n");
             }
@@ -118,7 +119,7 @@ public:
     
             std::cout << "****** download completed! ******" << std::endl;
             std::cout << "---------------------------------------------------" << std::endl;
-            fflsush(stdout);
+            fflush(stdout);
         }
         catch (std::exception &e)
         {
