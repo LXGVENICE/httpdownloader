@@ -69,6 +69,5 @@ void Run(std::string url)
 	avhttp::settings set;
 	Downloader down(io,set);
     down.Start(url);
-    //down.Stop();
 }
 
