@@ -64,13 +64,14 @@ std::string add_suffix(float val, char const* suffix = 0)
 class Downloader : public boost::enable_shared_from_this<Downloader>
 {
 public:
-    Downloader(avhttp::settings set):_stream(io){}
+    Downloader(boost::asio::io_service &io,avhttp::settings set)
+    :_io_service(io),_stream(_io),_set(set){}
 
-    void GetFile(std::string url)
+    void Start(std::string &url)
     {
-        if(!file(url))
+        if(!GetFile(url))
         {
-            std::cout << "download error" << endl;
+            std::cout << "download error" << std::endl;
         }
     }
     
