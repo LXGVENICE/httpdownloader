@@ -86,7 +86,8 @@ public:
                 add_suffix(_stream.file_size()).c_str() << std::endl;
     
             boost::thread twork(boost::bind(&boost::asio::io_service::run, &_io_service));
-    
+            
+            std::cout << "---------------------------------------------------" << std::endl;
             if (_stream.file_size() != -1)
             {
                 std::cout << std::endl;
@@ -108,13 +109,16 @@ public:
                     for (int i = 0; i < 49 - progress; i++)
                         printf(" ");
                     printf("] %s %s", add_suffix(bytes_download).c_str(), add_suffix(_stream.download_rate()).append("/s").c_str());
+                    fflsush(stdout);
                 }
                 printf("\n");
             }
     
             twork.join();
     
-            std::cout << "\n****** download completed! ******\n";
+            std::cout << "****** download completed! ******" << std::endl;
+            std::cout << "---------------------------------------------------" << std::endl;
+            fflsush(stdout);
         }
         catch (std::exception &e)
         {
