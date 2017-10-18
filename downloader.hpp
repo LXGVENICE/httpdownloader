@@ -88,7 +88,7 @@ public:
     
             boost::thread twork(boost::bind(&boost::asio::io_service::run, &_io_service));
             
-            std::cout << "---------------------------------------------------" << std::endl;
+            std::cout << "-------------------------------------------------------------------------" << std::endl;
             if (_stream.file_size() != -1)
             {
                 int percent = 0;
@@ -110,7 +110,7 @@ public:
                         printf(" ");
                     printf("] %s %s", add_suffix(bytes_download).c_str(), add_suffix(_stream.download_rate()).append("/s").c_str());
                     fflush(stdout);
-                    printf("/r");
+                    printf("\r");
                 }
                 printf("\n");
             }
@@ -118,7 +118,7 @@ public:
             twork.join();
     
             std::cout << "****** download completed! ******" << std::endl;
-            std::cout << "---------------------------------------------------" << std::endl;
+            std::cout << "-------------------------------------------------------------------------" << std::endl;
             fflush(stdout);
         }
         catch (std::exception &e)
