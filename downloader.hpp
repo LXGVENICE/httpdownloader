@@ -63,7 +63,7 @@ std::string add_suffix(float val, char const* suffix = 0)
 class Downloader : public boost::enable_shared_from_this<Downloader>
 {
 public:
-    Downloader(boost::asio::io_service &io,avhttp::settings set)
+    Downloader(boost::asio::io_service &io,avhttp::settings &set)
     :_io_service(io),_stream(io),_set(set){}
 
     void Start(std::string &url)
@@ -127,9 +127,9 @@ public:
 
 
 private:
-	boost::asio::io_service  _io_service;
+	boost::asio::io_service  &_io_service;
     avhttp::multi_download _stream;
-    avhttp::settings _set;
+    avhttp::settings &_set;
 };
 
 
