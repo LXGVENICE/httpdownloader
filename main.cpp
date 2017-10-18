@@ -41,9 +41,10 @@ int main(int argc, char* argv[])
 	{
 		std::cout << "error create" << std::endl;
 		exit(0);
-	}
+    }
 	std::cout << "work" << workid << std::endl;
-	std::cout << "num" << num << std::endl;
-    run(downer.GetUrl(workid));
+    std::cout << "num" << num << std::endl;
+    std::cout << "workid" << workid << std::endl;
+	Run(downer.GetUrl(workid));
 	return 0;
 }

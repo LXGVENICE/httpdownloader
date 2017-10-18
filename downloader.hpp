@@ -10,14 +10,16 @@ public:
     Downloader(boost::asio::io_service &io,avhttp::settings set)
     : _io_service(io),_stream(io),_set(set){}
 
-	~Downloader()
-	{
-		_stream.stop();
-	}
     void Start(std::string url)
     {
         _stream.start(url);
     }
+
+    void Stop()
+    {
+        _stream.stop();
+    }
+
 private:
 	boost::asio::io_service  &_io_service;
     avhttp::multi_download _stream;

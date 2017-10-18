@@ -5,6 +5,7 @@
 #include <avhttp.hpp>
 #include <string>
 #include <unistd.h>
+#include <fstream>
 
 /*
 void SetParameter(avhttp::setting &set,std::string path = "./")
@@ -45,7 +46,7 @@ int CreateWork(int num)
             }
             if(pid == 0)
             {
-				workid = i+1;
+				workid = i;
                 break;
             }
             else
@@ -62,11 +63,12 @@ int CreateWork(int num)
 	return workid;
 }
 
-void run(std::string url)
+void Run(std::string url)
 {
 	boost::asio::io_service io;
 	avhttp::settings set;
 	Downloader down(io,set);
-	down.Start(url);
+    down.Start(url);
+    //down.Stop();
 }
 
