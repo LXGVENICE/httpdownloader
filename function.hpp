@@ -1,7 +1,7 @@
 #pragma once
 #include "urldata.hpp"
 #include "function.hpp"
-#include "downloader.hpp"
+#include "download.hpp"
 #include <avhttp.hpp>
 #include <string>
 #include <unistd.h>

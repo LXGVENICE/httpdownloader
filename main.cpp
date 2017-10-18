@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 {
     if(argc < 2)
     {
-        std::cout << "Please input urls" << std::endl;
+        std::cout << "No input urls!" << std::endl;
         return 0;
     }
 
