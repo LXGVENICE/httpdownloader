@@ -4,7 +4,6 @@
 #include <boost/array.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
-#include <fstream>
 
 std::string to_string(int v, int width)
 {
@@ -65,7 +64,7 @@ class Downloader : public boost::enable_shared_from_this<Downloader>
 {
 public:
     Downloader(boost::asio::io_service &io,avhttp::settings set)
-    :_io_service(io),_stream(_io),_set(set){}
+    :_io_service(io),_stream(io),_set(set){}
 
     void Start(std::string &url)
     {
