@@ -16,12 +16,17 @@ public:
     {
         try
         {
-            _stream.start(_url,_set);
+            _stream.start(url,_set);
         }
         catch(std::exception &e)
         {
             std::cerr << "Error:" << e.what() << std::endl;
         }
+    }
+
+    void Stop()
+    {
+        _stream.stop();
     }
 private:
 	boost::asio::io_service  &_io_service;
