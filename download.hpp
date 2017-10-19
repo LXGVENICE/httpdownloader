@@ -2,6 +2,7 @@
 #include <avhttp.hpp>
 #include <iostream>
 #include <stdio.h>
+#include <time.h>
 #include <boost/array.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/enable_shared_from_this.hpp>
@@ -61,6 +62,33 @@ std::string add_suffix(float val, char const* suffix = 0)
     return ret;
 }
 
+std::string get_time(time_t &start,time_t end)
+{
+    long len = end - start;
+    int hour =  len / 3600;
+    len -= len / 3600;
+    int minute = len / 60;
+    int second -= len / 60;
+
+    std::string ans;
+    if(hour)
+    {
+        ans.append(atoi(hour));
+        ans.append("h:");
+    }
+    if(minute)
+    {
+        ans.append(atoi(minute));
+        ans.append("m:");
+    }
+    if(second)
+    {
+        ans.append(atoi(second));
+        ans.append(1,'s');
+    }
+    return ans;
+}
+
 class Downloader : public boost::enable_shared_from_this<Downloader>
 {
 public:
@@ -88,7 +116,9 @@ public:
                 std::cout << "file---'" << _stream.file_name().c_str() <<
                 "---' size is: " << "(" << _stream.file_size() << " bytes) " << 
                 add_suffix(_stream.file_size()).c_str() << std::endl;
-    
+            
+            time_t start,end;
+            start = time(NULL);
             boost::thread twork(boost::bind(&boost::asio::io_service::run, &_io_service));
             
             std::cout << "-------------------------------------------------------------------------" << std::endl;
@@ -111,7 +141,11 @@ public:
                         printf(">");
                     for (int i = 0; i < 49 - progress; i++)
                         printf(" ");
-                    printf("]%s%s", add_suffix(bytes_download).c_str(), add_suffix(_stream.download_rate()).append("/s").c_str());
+                    printf("]%s  %s", add_suffix(bytes_download).c_str(), add_suffix(_stream.download_rate()).append("/s").c_str());
+                    end = time(NULL);
+                    std::string t = get_time(start,end);
+                    printf("\nused time: %s",t.c_str());
+
                     fflush(stdout);
                     printf("\r");
                 }
@@ -121,7 +155,7 @@ public:
             twork.join();
     
             std::cout << std::endl << "****** download completed! ******" << std::endl;
-            std::cout << "-------------------------------------------------------------------------" << std::endl;
+            std::cout << std::endl << "-------------------------------------------------------------------------" << std::endl;
             fflush(stdout);
         }
         catch (std::exception &e)

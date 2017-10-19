@@ -60,7 +60,7 @@ std::string CreatePath(int &targc, char* argv[])
     }
     else
     {
-        /*
+        /*找不到合适的正则表达式
         std::regex reg("/^\/([/w]+\/?)+$/i");
         std::smatch match;
         if(std::regex_match(std::string(argv[argc-2]),match,reg))
