@@ -7,25 +7,11 @@
 #include <unistd.h>
 #include <fstream>
 
-/*
-void SetParameter(avhttp::setting &set,std::string path = "./")
+void SetParameter(avhttp::setting &set,std::string &path)
 {   
-    if(path.empty())
-    {
-        std::cout << "error path" << std::endl;
-        exit(0);
-    }
-    //set.save_path = path;
+    set.save_path = path;
     //disable_multi_download = false;
 }
-*/
-
-/*
-void SignHandler(int sign)
-{
-    
-}
-*/
 
 int CreateWork(int num)
 {
@@ -61,6 +47,27 @@ int CreateWork(int num)
 		workid = 0;
 	}
 	return workid;
+}
+
+std::string CreatePath(int &argc, char* argv[])
+{
+    std::string path;
+    if(argc < 3 || !strcmp(argv[argc-2],"-p"))
+    {
+        path.append("./")
+    }
+    else
+    {
+        std::regex reg("/^\/([/w]+\/?)+$/i");
+        std::smatch match;
+        if(std::regex_match(argv[argc-2],match,reg))
+        {
+            printf("Warning：%s is not a valid path，will use current directory\n");
+        }
+        path.append(argv[argc-2]);
+        argc -= 2;
+    }
+    return path;
 }
 
 void Run(std::string url)
