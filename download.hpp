@@ -76,21 +76,21 @@ std::string get_time(time_t &start,time_t end)
     {
         std::ostringstream oss;
         oss << hour;
-        ans.append(oss);
+        ans.append(oss.str());
         ans.append("h:");
     }
     if(minute)
     {
         std::ostringstream oss;
         oss << minute;
-        ans.append(oss);
+        ans.append(oss.str());
         ans.append("m:");
     }
     if(second)
     {
         std::ostringstream oss;
         oss << second;
-        ans.append(oss);
+        ans.append(oss.str());
         ans.append(1,'s');
     }
     return ans;
