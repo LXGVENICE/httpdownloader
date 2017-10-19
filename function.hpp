@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <fstream>
 
-void SetParameter(avhttp::setting &set,std::string &path)
+void SetParameter(avhttp::settings &set,std::string &path)
 {   
     set.save_path = path;
     //disable_multi_download = false;
@@ -54,7 +54,7 @@ std::string CreatePath(int &argc, char* argv[])
     std::string path;
     if(argc < 3 || !strcmp(argv[argc-2],"-p"))
     {
-        path.append("./")
+        path.append("./");
     }
     else
     {
@@ -62,7 +62,7 @@ std::string CreatePath(int &argc, char* argv[])
         std::smatch match;
         if(std::regex_match(argv[argc-2],match,reg))
         {
-            printf("Warning：%s is not a valid path，will use current directory\n");
+            printf("Warning：%s is not a valid path，will use current directory\n",argv[argc-2]);
         }
         path.append(argv[argc-2]);
         argc -= 2;
