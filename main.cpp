@@ -31,7 +31,7 @@ int main(int argc, char* argv[])
     }
 
     avhttp::settings set;
-    SetParameter(set，path);
+    SetParameter(set,path);
 	
 	int num = downer.GetNum();
 	if(num == 0)

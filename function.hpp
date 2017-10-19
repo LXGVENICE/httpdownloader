@@ -60,7 +60,7 @@ std::string CreatePath(int &argc, char* argv[])
     {
         std::regex reg("/^\/([/w]+\/?)+$/i");
         std::smatch match;
-        if(std::regex_match(argv[argc-2],match,reg))
+        if(std::regex_match(std::string(argv[argc-2]),match,reg))
         {
             printf("Warning：%s is not a valid path，will use current directory\n",argv[argc-2]);
         }
