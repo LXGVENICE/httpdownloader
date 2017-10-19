@@ -68,22 +68,22 @@ std::string get_time(time_t &start,time_t end)
     int hour =  len / 3600;
     len -= len / 3600;
     int minute = len / 60;
-    int second -= len / 60;
+    int second = len;
 
     std::string ans;
     if(hour)
     {
-        ans.append(atoi(hour));
+        ans.append(itoa(hour));
         ans.append("h:");
     }
     if(minute)
     {
-        ans.append(atoi(minute));
+        ans.append(itoa(minute));
         ans.append("m:");
     }
     if(second)
     {
-        ans.append(atoi(second));
+        ans.append(itoa(second));
         ans.append(1,'s');
     }
     return ans;
