@@ -12,7 +12,8 @@ int main(int argc, char* argv[])
         return 0;
     }
 
-    std::string path = CreatePath(argc,argv);
+    int targc = argc;
+    std::string path = CreatePath(targc,argv);
 
     avhttp::settings set;
     SetParameter(set,path);
@@ -22,7 +23,7 @@ int main(int argc, char* argv[])
 
     Download downer;
 
-    for(std::size_t i = 1;i < argc;++i)
+    for(std::size_t i = 1;i < targc;++i)
     {
         std::string tmp(argv[i]);
         if(!std::regex_match(tmp,match,reg))
