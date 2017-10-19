@@ -102,6 +102,7 @@ public:
     :_io_service(io),_stream(io)
     {
         _set.save_path = path;
+        _set.meta_file = path;
     }
 
     void Start(std::string &url)
