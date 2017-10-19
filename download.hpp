@@ -2,6 +2,7 @@
 #include <avhttp.hpp>
 #include <iostream>
 #include <stdio.h>
+#include <sstream>
 #include <time.h>
 #include <boost/array.hpp>
 #include <boost/shared_ptr.hpp>
@@ -73,17 +74,23 @@ std::string get_time(time_t &start,time_t end)
     std::string ans;
     if(hour)
     {
-        ans.append(itoa(hour));
+        std::ostringstream oss;
+        oss << hour;
+        ans.append(oss);
         ans.append("h:");
     }
     if(minute)
     {
-        ans.append(itoa(minute));
+        std::ostringstream oss;
+        oss << minute;
+        ans.append(oss);
         ans.append("m:");
     }
     if(second)
     {
-        ans.append(itoa(second));
+        std::ostringstream oss;
+        oss << second;
+        ans.append(oss);
         ans.append(1,'s');
     }
     return ans;
