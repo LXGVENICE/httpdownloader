@@ -14,6 +14,9 @@ int main(int argc, char* argv[])
 
     std::string path = CreatePath(argc,argv);
 
+    avhttp::settings set;
+    SetParameter(set,path);
+
     std::regex reg("(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]");
     std::smatch match;
 
@@ -30,9 +33,6 @@ int main(int argc, char* argv[])
         downer.Append(tmp);
     }
 
-    avhttp::settings set;
-    SetParameter(set,path);
-	
 	int num = downer.GetNum();
 	if(num == 0)
 	{

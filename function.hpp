@@ -6,6 +6,8 @@
 #include <string>
 #include <unistd.h>
 #include <fstream>
+#include <regex>
+
 
 void SetParameter(avhttp::settings &set,std::string &path)
 {   
