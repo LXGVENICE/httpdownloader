@@ -2,8 +2,6 @@
 #include <string>
 #include <vector>
 
-typedef unsigned int size_t;
-
 //存储一条url数据
 class Urldata
 {

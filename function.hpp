@@ -12,8 +12,9 @@
 void SetParameter(avhttp::settings &set,std::string &path)
 {   
     set.save_path = path;
-    //disable_multi_download = false;
+    //set.meta_file = path;
 }
+	
 
 int CreateWork(int num)
 {

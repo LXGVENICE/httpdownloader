@@ -142,11 +142,17 @@ public:
                     printf("%3d%% [", percent);
                     int progress = percent / 2;
                     for (int i = 0; i < progress; i++)
-                        printf("=");
+					{
+						printf("=");
+					}
                     if (progress != 50)
-                        printf(">");
+					{
+						printf(">");
+					}
                     for (int i = 0; i < 49 - progress; i++)
-                        printf(" ");
+					{
+						printf(" ");
+					}
                     printf("]%s  %s", add_suffix(bytes_download).c_str(), add_suffix(_stream.download_rate()).append("/s").c_str());
                     end = time(NULL);
                     std::string t = get_time(start,end);
