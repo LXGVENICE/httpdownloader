@@ -14,9 +14,13 @@ int main(int argc, char* argv[])
 
     int targc = argc;
     std::string path = CreatePath(targc,argv);
+    if(path == "./")
+    {
+        targc -= 2;
+    }
 
-    avhttp::settings set;
-    SetParameter(set,path);
+    //avhttp::settings set;
+    //SetParameter(set,path);
 
     std::regex reg("(https?|ftp|file)://[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]");
     std::smatch match;
@@ -45,6 +49,6 @@ int main(int argc, char* argv[])
 		std::cout << "error create" << std::endl;
 		exit(0);
     }
-    Run(downer.GetUrl(workid),set);
+    Run(downer.GetUrl(workid),path);
 	return 0;
 }

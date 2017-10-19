@@ -6,4 +6,6 @@ downloader: main.cpp
 clean:
 	rm downloader
 
+restart:
+	rm *.meta
 

@@ -69,15 +69,14 @@ std::string CreatePath(int &argc, char* argv[])
         }
         */
         path.append(argv[argc-2]);
-        argc -= 2;
     }
     return path;
 }
 
-void Run(std::string url,avhttp::settings &set)
+void Run(std::string url,std::string &path)
 {
 	boost::asio::io_service io;
-	Downloader down(io,set);
+	Downloader down(io,path);
     down.Start(url);
 }
 
