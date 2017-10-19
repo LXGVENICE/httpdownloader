@@ -68,7 +68,7 @@ std::string CreatePath(int &targc, char* argv[])
             printf("Warning：%s is not a valid path，will use current directory\n",argv[argc-2]);
         }
         */
-        path.append(argv[targc-2]);
+        path.append(argv[targc-1]);
         targc -= 2;
     }
     return path;
