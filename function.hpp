@@ -58,22 +58,23 @@ std::string CreatePath(int &argc, char* argv[])
     }
     else
     {
+        /*
         std::regex reg("/^\/([/w]+\/?)+$/i");
         std::smatch match;
         if(std::regex_match(std::string(argv[argc-2]),match,reg))
         {
             printf("Warning：%s is not a valid path，will use current directory\n",argv[argc-2]);
         }
+        */
         path.append(argv[argc-2]);
         argc -= 2;
     }
     return path;
 }
 
-void Run(std::string url)
+void Run(std::string url,avhttp::settings &set)
 {
 	boost::asio::io_service io;
-	avhttp::settings set;
 	Downloader down(io,set);
     down.Start(url);
 }

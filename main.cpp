@@ -44,6 +44,6 @@ int main(int argc, char* argv[])
 		std::cout << "error create" << std::endl;
 		exit(0);
     }
-    Run(downer.GetUrl(workid));
+    Run(downer.GetUrl(workid),set);
 	return 0;
 }
