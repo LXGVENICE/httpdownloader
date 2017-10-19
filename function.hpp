@@ -51,10 +51,10 @@ int CreateWork(int num)
 	return workid;
 }
 
-std::string CreatePath(int &argc, char* argv[])
+std::string CreatePath(int &targc, char* argv[])
 {
     std::string path;
-    if(argc < 3 || !strcmp(argv[argc-2],"-p"))
+    if(targc < 3 || 0 != strcmp(argv[targc-2],"-p"))
     {
         path.append("./");
     }
@@ -68,7 +68,8 @@ std::string CreatePath(int &argc, char* argv[])
             printf("Warning：%s is not a valid path，will use current directory\n",argv[argc-2]);
         }
         */
-        path.append(argv[argc-2]);
+        path.append(argv[targc-2]);
+        targc -= 2;
     }
     return path;
 }

@@ -14,10 +14,6 @@ int main(int argc, char* argv[])
 
     int targc = argc;
     std::string path = CreatePath(targc,argv);
-    if(path == "./")
-    {
-        targc -= 2;
-    }
 
     //avhttp::settings set;
     //SetParameter(set,path);
